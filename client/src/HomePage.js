@@ -1,9 +1,8 @@
-// src/HomePage.js
 import React, { useState } from 'react';
 
 const HomePage = () => {
     const [selectedState, setSelectedState] = useState('Select State');
-    const states = ['California', 'Texas', 'New York', 'Florida', 'Other']; // Add more states as required
+    const states = ['State1', 'State2', 'State3', 'State4', 'Other']; 
 
     const handleStateChange = (e) => {
         setSelectedState(e.target.value);
@@ -11,10 +10,9 @@ const HomePage = () => {
 
     return (
         <div>
-            {/* Header Section */}
             <header style={styles.header}>
                 <div style={styles.logo}>
-                    <img src="/path-to-your-logo.png" alt="Drivify Logo" style={styles.logoImage} />
+                    <img src="/dl.svg" alt="Drivify Logo" style={styles.logoImage} />
                     <h1>Drivify</h1>
                 </div>
                 <nav style={styles.nav}>
@@ -24,9 +22,7 @@ const HomePage = () => {
                 </nav>
             </header>
 
-            {/* Main Content Section */}
             <main style={styles.main}>
-                {/* Background Image Section */}
                 <section style={styles.banner}>
                     <h2>Get Your Driving License</h2>
                     <div style={styles.dropdownContainer}>
@@ -38,8 +34,6 @@ const HomePage = () => {
                         </select>
                     </div>
                 </section>
-
-                {/* Content Placeholder */}
                 <section style={styles.content}>
                     <h3>Content...</h3>
                 </section>
@@ -48,7 +42,7 @@ const HomePage = () => {
     );
 };
 
-// Inline styles for simplicity
+
 const styles = {
     header: {
         display: 'flex',
