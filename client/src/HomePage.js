@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const HomePage = () => {
     const [selectedState, setSelectedState] = useState('Select State');
-    const states = ['State1', 'State2', 'State3', 'State4', 'Other']; 
+    const states = ['Karnataka', 'Maharashtra', 'Tamil Nadu', 'Kerala', 'Other']; 
 
     const handleStateChange = (e) => {
         setSelectedState(e.target.value);
