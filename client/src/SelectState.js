@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const SelectState= () =>
 {
     const [selectedState, setSelectedState] = useState('Select State');
     const states = ['Karnataka', 'Maharashtra', 'Tamil Nadu', 'Kerala', 'Other']; 
-
-    const handleStateChange = (e) => {
-        setSelectedState(e.target.value);
+    const navigate = useNavigate(); 
+    const handleStateChange = () => {
+        navigate('/home');
     };
     return(
         <div>
@@ -77,7 +77,7 @@ const styles = {
     },
     dropdownContainer: {
         margin: 'auto',
-
+        
     },
     dropdown: {
         padding: '10px',
