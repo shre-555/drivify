@@ -26,11 +26,28 @@ const About = React.forwardRef((props, ref) => {
     );
 });
 
+const Contact= React.forwardRef((props, ref) =>
+{
+    return(
+        <div ref={ref} style={styles.dl}>
+            <h1>Contact</h1>
+            <div style={{display:'flex'}}>
+                <img src="./ContactUs.jpg" alt="car" width="300" />
+                <div style={{display: 'block'}}>
+                    <h2>Phone</h2>
+                    <p>+91 0123456789</p>
+                </div>
+            </div>
+        </div>
+    )
+});
+
 const SelectState = () => {
     const [selectedState, setSelectedState] = useState('Select State');
     const states = ['Karnataka', 'Maharashtra', 'Tamil Nadu', 'Kerala', 'Other']; 
     const navigate = useNavigate();
     const aboutRef = useRef(null);
+    const contactRef= useRef(null);
 
     const handleStateChange = (event) => {
         setSelectedState(event.target.value);
@@ -45,6 +62,12 @@ const SelectState = () => {
         }
     };
 
+    const scrollToContact = () => {
+        if (contactRef.current) {
+            contactRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <div>
             <div style={styles.top}>
@@ -56,7 +79,7 @@ const SelectState = () => {
                     <nav style={styles.nav}>
                         <button onClick={scrollToAbout} style={styles.link}>About</button>
                         <Link to="/feedback" style={styles.link}>Feedback</Link>
-                        <Link to="/contact" style={styles.link}>Contact</Link>
+                        <button onClick={scrollToContact} style={styles.link}>Contact</button>
                     </nav>
                 </header>
 
@@ -75,6 +98,9 @@ const SelectState = () => {
             </div>
             <div>
                 <About ref={aboutRef} />
+            </div>
+            <div>
+                <Contact ref={contactRef} />
             </div>
         </div>
     );

@@ -5,7 +5,7 @@ import Home from "./Home";
 import Instructions from "./Instructions";
 import Apply from "./ApplicationForm";
 import Payment from "./Payment";
-
+import ApplicationDL from './ApplicationDL';
 
 const App = () => {
     return (
@@ -17,6 +17,7 @@ const App = () => {
         <Route path="/instructions" element={<Instructions />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/ApplicationDL" element={<ApplicationDL />} />
       </Routes>
     </Router>
     );
