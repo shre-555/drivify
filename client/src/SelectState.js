@@ -2,6 +2,44 @@ import React, { useState, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './SelectState.css'; 
 
+const Steps = React.forwardRef((props, ref) => {
+    return (
+        <div ref={ref} style={{paddingLeft: '50px', backgroundColor: 'rgb(243, 243, 243)'}}>
+            <h1>Steps To Apply</h1>
+            <div className="steps">
+                <div className='stepbox'>
+                    <img src="./apply.png" alt="apply" width="70" />
+                    <br/>
+                    <b>Apply</b>
+                    <br/>
+                    <p>Select your state</p>
+                    <p>Fill the application form</p>
+                    <p>Get your application number</p>
+                </div>
+                <div className='stepbox'>
+                    <img src="./test.png" alt="test" width="70" />
+                    <br/>
+                    <b>Test</b>
+                    <br/>
+                    <p>Refer to our videos for the test</p>
+                    <p>Login to the test</p>
+                    <p>Give the test</p>
+                </div>
+                <div className='stepbox'>
+                    <img src="./complete.png" alt="test" width="70" />
+                    <br/>
+                    <b>Get Your License</b>
+                    <br/>
+                    <p>Wait for test results</p>
+                    <p>Get your Driving License!</p>
+                </div>
+            </div>
+            
+        </div>
+    );
+});
+
+
 const About = React.forwardRef((props, ref) => {
     return (
         <div ref={ref} className="dl">
@@ -48,6 +86,7 @@ const SelectState = () => {
     const navigate = useNavigate();
     const aboutRef = useRef(null);
     const contactRef = useRef(null);
+    const stepsRef = useRef(null);
 
     const handleStateChange = (event) => {
         setSelectedState(event.target.value);
@@ -56,6 +95,11 @@ const SelectState = () => {
         }
     };
 
+    const scrollToSteps = () => {
+        if (stepsRef.current) {
+            stepsRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
     const scrollToAbout = () => {
         if (aboutRef.current) {
             aboutRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -77,8 +121,8 @@ const SelectState = () => {
                         <h1>Drivify</h1>
                     </div>
                     <nav className="nav">
+                        <button onClick={scrollToSteps} className="link">Steps to Apply</button>
                         <button onClick={scrollToAbout} className="link">About</button>
-                        <Link to="/feedback" className="link">Feedback</Link>
                         <button onClick={scrollToContact} className="link">Contact</button>
                     </nav>
                 </header>
@@ -95,6 +139,9 @@ const SelectState = () => {
                         </select>
                     </div>
                 </div>
+            </div>
+            <div>
+                <Steps ref={stepsRef} />
             </div>
             <div>
                 <About ref={aboutRef} />
