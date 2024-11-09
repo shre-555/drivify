@@ -22,7 +22,7 @@ const ApplicationForm = () => {
       fullName: "",
       dob: "",
       address: "",
-      aadhar: "",
+      aadhaar: "",
       city: "",
       pincode:"",
       email: "",
@@ -49,7 +49,7 @@ const ApplicationForm = () => {
       fullName,
       dob,
       address,
-      aadhar,
+      aadhaar,
       city,
       pincode,
       email,
@@ -59,14 +59,14 @@ const ApplicationForm = () => {
       vehicleType
     } = formData;
   
-    if (!fullName || !dob || !address || !aadhar || !city ||!pincode || !email || !phno || !bloodGroup || !nationality || !vehicleType) {
+    if (!fullName || !dob || !address || !aadhaar || !city ||!pincode || !email || !phno || !bloodGroup || !nationality || !vehicleType) {
       alert("Please fill all the fields before submitting the form.");
       return;  // Prevents submission if any field is empty
     }
   
-    // Check if the Aadhar number is valid (12 digits)
-    if (aadhar.length !== 12 || isNaN(aadhar)) {
-      alert("Please enter a valid 12-digit Aadhar number.");
+    // Check if the aadhaar number is valid (12 digits)
+    if (aadhaar.length !== 12 || isNaN(aadhaar)) {
+      alert("Please enter a valid 12-digit aadhaar number.");
       return;
     }
   
@@ -89,7 +89,7 @@ const ApplicationForm = () => {
       fullName: "",
       dob: "",
       address: "",
-      aadhar: "",
+      aadhaar: "",
       city: "",
       pincode:"",
       email: "",
@@ -152,8 +152,8 @@ const ApplicationForm = () => {
             <br/>
         <br/>
         <label style={{fontSize:"25px",marginLeft:'10px'}}>
-          Aadhar no.:</label>
-          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="aadhar" pattern="[0-9]{12}" placeholder='12 digits' value={formData.aadhar} onChange={handleInputChange} required ></input>
+          aadhaar no.:</label>
+          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="aadhaar" pattern="[0-9]{12}" placeholder='12 digits' value={formData.aadhaar} onChange={handleInputChange} required ></input>
         <br/>
         <br />
         <label style={{fontSize:"25px",marginLeft:'10px'}}>
