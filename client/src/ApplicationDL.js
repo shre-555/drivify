@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import validator from 'validator';
+import Tesseract from 'tesseract.js';
 
 const Form = () => {
     const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ const Form = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const [extractedText, setExtractedText] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -27,55 +29,72 @@ const Form = () => {
     const handleFileChange = (e) => {
         const { name, files } = e.target;
         setFormData({ ...formData, [name]: files[0] });
+        extractText(files[0]);
     };
 
+    //validate the form details
     const validateForm = () => {
         const newErrors = {};
 
-        if (!formData.fullName) 
-            newErrors.fullName = "Full Name is required";
-        if (!validator.isDate(formData.dob))
-            newErrors.dob = "Invalid date of birth";
-        if (!formData.address) 
-            newErrors.address = "Address is required";
-        if (!validator.isLength(formData.aadhaar, { min: 12, max: 12 })) 
-            newErrors.aadhaar = "Aadhaar must be 12 digits";
-        if (!validator.isLength(formData.pincode, { min: 6, max: 6 })) 
-            newErrors.pincode = "Pincode must be 6 digits";
-        if (!validator.isEmail(formData.email)) 
-            newErrors.email = "Invalid email address";
-        if (!validator.isLength(formData.phno, { min: 10, max: 10 })) 
-            newErrors.phno = "Phone number must be 10 digits";
+        if (!formData.fullName) newErrors.fullName = "Full Name is required";
+        if (!validator.isDate(formData.dob)) newErrors.dob = "Invalid date of birth";
+        if (!formData.address) newErrors.address = "Address is required";
+        if (!validator.isLength(formData.aadhaar, { min: 12, max: 12 })) newErrors.aadhaar = "Aadhaar must be 12 digits";
+        if (!validator.isLength(formData.pincode, { min: 6, max: 6 })) newErrors.pincode = "Pincode must be 6 digits";
+        if (!validator.isEmail(formData.email)) newErrors.email = "Invalid email address";
+        if (!validator.isLength(formData.phno, { min: 10, max: 10 })) newErrors.phno = "Phone number must be 10 digits";
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
+    // Function to extract text using Tesseract
+    const extractText = (file) => {
+        if (!file) return;
+
+        Tesseract.recognize(
+            file,
+            'eng',
+            {
+                logger: (m) => console.log(m),
+            }
+        ).then(({ data: { text } }) => {
+            setExtractedText(text);  
+            extractAadhaarNumber(text);  
+        });
+    };
+
+    // Function to extract Aadhaar number using regex
+    const extractAadhaarNumber = (text) => {
+        const aadhaarPattern = /\b\d{4}\s\d{4}\s\d{4}\b/;
+        const match = text.match(aadhaarPattern);
+        if (match) {
+            setFormData({ ...formData, aadhaar: match[0].replace(/\s/g, '') }); // Set extracted Aadhaar number
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
         if (!validateForm()) return;
-    
+
         try {
             const formDataToSend = new FormData();
-            
-            // Append all text fields to FormData
+
             Object.keys(formData).forEach((key) => {
                 if (key !== "aadhaarfile") {
                     formDataToSend.append(key, formData[key]);
                 }
             });
-    
-            // Append the file (if available)
+
             if (formData.aadhaarfile) {
                 formDataToSend.append("aadhaarfile", formData.aadhaarfile);
             }
-    
+
             const response = await fetch('http://localhost:5000/record', {
                 method: 'POST',
                 body: formDataToSend,
             });
-    
+
             if (response.ok) {
                 alert("Application submitted successfully");
                 setFormData({
@@ -125,7 +144,15 @@ const Form = () => {
                 <br /><br />
 
                 <label>Aadhaar No.:</label>
-                <input type="text" name="aadhaar" pattern="[0-9]{12}" placeholder="12 digits" value={formData.aadhaar} onChange={handleInputChange} required />
+                <input
+                    type="text"
+                    name="aadhaar"
+                    value={formData.aadhaar}
+                    onChange={handleInputChange}
+                    pattern="[0-9]{12}"
+                    placeholder="12 digits"
+                    required
+                />
                 {errors.aadhaar && <p style={{ color: 'red' }}>{errors.aadhaar}</p>}
                 <br /><br />
 
