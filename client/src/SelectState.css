@@ -1,0 +1,54 @@
+.top {
+    background-image: url("/public/DLHome2.png");
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.main {
+    margin: auto;
+    text-align: center;
+}
+
+.dropdown-container {
+    margin: auto;
+}
+
+.dropdown {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.dl {
+    display: block;
+    padding-left: 50px;
+}

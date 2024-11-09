@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import './SelectState.css'; 
 
 const About = React.forwardRef((props, ref) => {
     return (
-        <div ref={ref} style={styles.dl}>
+        <div ref={ref} className="dl">
             <h1>About Us</h1>
-            <div style={{display:'flex'}}>
+            <div style={{ display: 'flex' }}>
                 <dl>
                     <dt>Vision</dt>
                     <dd>To improve the quality of service delivery to the citizen and the quality of work environment of the RTOs.</dd>
@@ -26,28 +27,27 @@ const About = React.forwardRef((props, ref) => {
     );
 });
 
-const Contact= React.forwardRef((props, ref) =>
-{
-    return(
-        <div ref={ref} style={styles.dl}>
+const Contact = React.forwardRef((props, ref) => {
+    return (
+        <div ref={ref} className="dl">
             <h1>Contact</h1>
-            <div style={{display:'flex'}}>
+            <div style={{ display: 'flex' }}>
                 <img src="./ContactUs.jpg" alt="car" width="300" />
-                <div style={{display: 'block'}}>
+                <div style={{ display: 'block' }}>
                     <h2>Phone</h2>
                     <p>+91 0123456789</p>
                 </div>
             </div>
         </div>
-    )
+    );
 });
 
 const SelectState = () => {
     const [selectedState, setSelectedState] = useState('Select State');
-    const states = ['Karnataka', 'Maharashtra', 'Tamil Nadu', 'Kerala', 'Other']; 
+    const states = ['Karnataka', 'Maharashtra', 'Tamil Nadu', 'Kerala', 'Other'];
     const navigate = useNavigate();
     const aboutRef = useRef(null);
-    const contactRef= useRef(null);
+    const contactRef = useRef(null);
 
     const handleStateChange = (event) => {
         setSelectedState(event.target.value);
@@ -70,24 +70,24 @@ const SelectState = () => {
 
     return (
         <div>
-            <div style={styles.top}>
-                <header style={styles.header}> 
-                    <div style={styles.logo}>
+            <div className="top">
+                <header className="header">
+                    <div className="logo">
                         <img src="/dl.svg" alt="Drivify Logo" />
                         <h1>Drivify</h1>
                     </div>
-                    <nav style={styles.nav}>
-                        <button onClick={scrollToAbout} style={styles.link}>About</button>
-                        <Link to="/feedback" style={styles.link}>Feedback</Link>
-                        <button onClick={scrollToContact} style={styles.link}>Contact</button>
+                    <nav className="nav">
+                        <button onClick={scrollToAbout} className="link">About</button>
+                        <Link to="/feedback" className="link">Feedback</Link>
+                        <button onClick={scrollToContact} className="link">Contact</button>
                     </nav>
                 </header>
 
-                <div style={styles.main}>
+                <div className="main">
                     <h1 style={{ fontSize: '40px' }}>Get Your Driving License!</h1>
                     <h2>Select State</h2>
-                    <div style={styles.dropdownContainer}>
-                        <select style={styles.dropdown} value={selectedState} onChange={handleStateChange}>
+                    <div className="dropdown-container">
+                        <select className="dropdown" value={selectedState} onChange={handleStateChange}>
                             <option value="Select State" disabled>Select State</option>
                             {states.map((state) => (
                                 <option key={state} value={state}>{state}</option>
@@ -104,55 +104,6 @@ const SelectState = () => {
             </div>
         </div>
     );
-};
-
-const styles = {
-    top: {
-        backgroundImage: 'url("/DLHome2.png")',
-        height: 600,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        boxShadow: 'inset 0 0 0 1000px rgba(0,0,0,0.5)',
-        color: 'white',
-    },
-    header: {   
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '10px 20px',
-    },
-    logo: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    nav: {
-        display: 'flex',
-        gap: '20px',
-    },
-    link: {
-        color: 'white',
-        textDecoration: 'none',
-        fontSize: 20,
-        background: 'none', // Remove button styles
-        border: 'none',     // Remove button styles
-        cursor: 'pointer',  // Change cursor to pointer
-    },
-    main: {
-        margin: 'auto',
-        textAlign: 'center',
-    },
-    dropdownContainer: {
-        margin: 'auto',
-    },
-    dropdown: {
-        padding: '10px',
-        fontSize: '16px',
-    },
-    dl: {
-        display: 'block',
-        paddingLeft: 50
-      }
 };
 
 export default SelectState;
