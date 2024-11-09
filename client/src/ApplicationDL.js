@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import validator from 'validator';
 import Tesseract from 'tesseract.js';
+import './form_styles.css';
 
 const Form = () => {
     const [formData, setFormData] = useState({
@@ -121,7 +122,7 @@ const Form = () => {
     };
 
     return (
-        <div>
+        <div className='formstyle'>
             <form onSubmit={handleSubmit}>
                 <label>Full Name:</label>
                 <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required />
@@ -140,7 +141,7 @@ const Form = () => {
 
                 <label>Aadhaar Card Upload:</label>
                 <input type="file" name="aadhaarfile" onChange={handleFileChange} required />
-                {formData.aadhaarfile && <p>Selected file: {formData.aadhaarfile.name}</p>} {/* Display selected file name */}
+                {formData.aadhaarfile && <p>Selected file: {formData.aadhaarfile.name}</p>}
                 <br /><br />
 
                 <label>Aadhaar No.:</label>
@@ -207,7 +208,7 @@ const Form = () => {
                 {errors.vehicleType && <p style={{ color: 'red' }}>{errors.vehicleType}</p>}
                 <br /><br />
 
-                <button style={{ fontSize: "25px", marginLeft: '200px', padding: '5px' }} type="submit">Submit Application</button>
+                <button type="submit">Submit Application</button>
             </form>
         </div>
     );
@@ -216,7 +217,7 @@ const Form = () => {
 const ApplicationDL = () => {
     return (
         <div>
-            <div style={div_style}>
+            <div style={styles.div_style}>
                 <header>
                     <figure>
                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
@@ -232,9 +233,11 @@ const ApplicationDL = () => {
     );
 };
 
-const div_style = {
-    background: 'linear-gradient(to right, orange, red, purple)',
-    height: 250,
+const styles = {
+    div_style:{
+        background: 'linear-gradient(to right, orange, red, purple)',
+        height: 250,
+    }
 };
 
 export default ApplicationDL;
