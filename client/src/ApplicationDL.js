@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import Tesseract from 'tesseract.js';
 import './form_styles.css';
 
 const Form = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         fullName: '',
         dob: '',
@@ -98,20 +100,10 @@ const Form = () => {
 
             if (response.ok) {
                 alert("Application submitted successfully");
-                setFormData({
-                    fullName: '',
-                    dob: '',
-                    address: '',
-                    aadhaarfile: null,
-                    aadhaar: '',
-                    city: '',
-                    pincode: '',
-                    email: '',
-                    phno: '',
-                    bloodGroup: 'O',
-                    nationality: 'Indian',
-                    vehicleType: 'twoWheeler',
-                });
+                const data = await response.json(); 
+                const message = data.message; 
+                console.log(message); 
+                navigate('/ConfirmDL', { state: { message } }); 
             } else {
                 alert("Failed to submit application");
             }
@@ -219,11 +211,11 @@ const ApplicationDL = () => {
         <div>
             <div style={styles.div_style}>
                 <header>
-                    <figure>
+                    <div>
                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
                         <figcaption style={{ marginLeft: '12px', marginTop: '0px', color: 'white' }}><b><i>Drivify</i></b></figcaption>
                         <h1 style={{ color: 'white', textAlign: 'center' }}>Application Form For DL</h1>
-                    </figure>
+                    </div>
                 </header>
             </div>
             <div>

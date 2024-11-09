@@ -6,6 +6,7 @@ import Instructions from "./Instructions";
 import Apply from "./ApplicationForm";
 import Payment from "./Payment";
 import ApplicationDL from './ApplicationDL';
+import ConfirmDL from './ConfirmDL';
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/payment" element={<Payment />} />
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/ApplicationDL" element={<ApplicationDL />} />
+        <Route path="/ConfirmDL" element={<ConfirmDL />} />
       </Routes>
     </Router>
     );
