@@ -1,28 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router';
-
+import { saveApplication , getApplication}from './api'; 
 const ApplicationForm = () => {
   const navigate = useNavigate(); // Initialize the navigate hook
     const div_style={
         background: 'linear-gradient(to right,orange,red,purple)',
         height:250,
     };
-    const headerStyle = {
-      color: 'white',
-      fontSize: '2em',
-      textAlign: 'center',
-    };
-  
-    const paragraphStyle = {
-      color: 'darkgray',
-      fontSize: '1.2em',
-      textAlign: 'center',
-    };
     const [formData, setFormData] = useState({
       fullName: "",
       dob: "",
       address: "",
-      aadhaar: "",
+      aadhar: "",
       city: "",
       pincode:"",
       email: "",
@@ -41,7 +30,7 @@ const ApplicationForm = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
   
     // Validation: Check if all fields are filled
@@ -49,7 +38,7 @@ const ApplicationForm = () => {
       fullName,
       dob,
       address,
-      aadhaar,
+      aadhar,
       city,
       pincode,
       email,
@@ -59,14 +48,14 @@ const ApplicationForm = () => {
       vehicleType
     } = formData;
   
-    if (!fullName || !dob || !address || !aadhaar || !city ||!pincode || !email || !phno || !bloodGroup || !nationality || !vehicleType) {
+    if (!fullName || !dob || !address || !aadhar || !city ||!pincode || !email || !phno || !bloodGroup || !nationality || !vehicleType) {
       alert("Please fill all the fields before submitting the form.");
       return;  // Prevents submission if any field is empty
     }
   
-    // Check if the aadhaar number is valid (12 digits)
-    if (aadhaar.length !== 12 || isNaN(aadhaar)) {
-      alert("Please enter a valid 12-digit aadhaar number.");
+    // Check if the Aadhar number is valid (12 digits)
+    if (aadhar.length !== 12 || isNaN(aadhar)) {
+      alert("Please enter a valid 12-digit Aadhar number.");
       return;
     }
   
@@ -79,17 +68,23 @@ const ApplicationForm = () => {
       alert("Please enter a valid 6-digit pincode number.");
       return;
     }
-  
+    try {
+      const res = await saveApplication(formData); // Call the API function
+            if (res) {
+                alert(`Application saved successfully! ID: ${res.id}`);
+            }
+            
+            } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+          }
     // If all validations pass, generate an application ID and navigate to the payment page
-    const applicationId = Math.random().toString(36).substring(7);
-    alert('Application Submitted! Your Application ID is ${applicationId}');
-  
     // Clear form fields after submission
     setFormData({
       fullName: "",
       dob: "",
       address: "",
-      aadhaar: "",
+      aadhar: "",
       city: "",
       pincode:"",
       email: "",
@@ -152,8 +147,8 @@ const ApplicationForm = () => {
             <br/>
         <br/>
         <label style={{fontSize:"25px",marginLeft:'10px'}}>
-          aadhaar no.:</label>
-          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="aadhaar" pattern="[0-9]{12}" placeholder='12 digits' value={formData.aadhaar} onChange={handleInputChange} required ></input>
+          Aadhar no.:</label>
+          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="aadhar" pattern="[0-9]{12}" placeholder='12 digits' value={formData.aadhar} onChange={handleInputChange} required ></input>
         <br/>
         <br />
         <label style={{fontSize:"25px",marginLeft:'10px'}}>
