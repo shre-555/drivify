@@ -42,24 +42,28 @@ const Steps = React.forwardRef((props, ref) => {
 
 const About = React.forwardRef((props, ref) => {
     return (
-        <div ref={ref} className="dl">
+        <div ref={ref} className="about">
             <h1>About Us</h1>
-            <div style={{ display: 'flex' }}>
-                <dl>
-                    <dt>Vision</dt>
-                    <dd>To improve the quality of service delivery to the citizen and the quality of work environment of the RTOs.</dd>
-                    <dt>Mission</dt>
-                    <dd>To automate all Vehicle Registration and Driving License related activities in transport authorities of country with introduction of smart card technology to handle issues like inter state transport vehicle movement and to create state and national level registers of vehicles/DL information</dd>
-                    <dt>Objectives</dt>
-                    <dd>
-                        <ul>
-                            <li>Better services to Transport Department as well as citizen</li>
-                            <li>Quick implementation of government policies from time to time</li>
-                            <li>Instant access of Vehicle/DL information to other government departments</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <img src="./About.jpg" alt="car" width="500" />
+            <div>
+                <div style={{display: 'flex'}}>
+                    <div className='objective'>
+                        <img src="./1.png" height="50px"/>
+                        <h3>Vision</h3>
+                        <p>To improve the quality of service delivery to the citizen and the quality of work environment of the RTOs.</p>
+                    </div>
+                    <div className='objective'>
+                        <img src="./2.png" height="50px"/>
+                        <h3>Mission</h3>
+                        <p>To automate all Vehicle Registration and Driving License related activities in transport authorities of country with introduction of smart card technology to handle issues like inter state transport vehicle movement and to create state and national level registers of vehicles/DL information</p>
+                    </div>
+                    <div className='objective'>
+                         <img src="./3.png" height="50px"/>
+                        <h3>Objectives</h3>
+                            <p>Better services to Transport Department as well as citizen</p>
+                            <p>Instant access of Vehicle/DL information to other government departments</p>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     );

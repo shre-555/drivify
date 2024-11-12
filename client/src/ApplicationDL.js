@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import Tesseract from 'tesseract.js';
 import './form_styles.css';
+import './header_col.css'
 
 const Form = () => {
     const navigate = useNavigate();
@@ -209,7 +210,7 @@ const Form = () => {
 const ApplicationDL = () => {
     return (
         <div>
-            <div style={styles.div_style}>
+            <div className='head'>
                 <header>
                     <div>
                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
