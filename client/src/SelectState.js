@@ -47,18 +47,18 @@ const About = React.forwardRef((props, ref) => {
         <div ref={ref} className="about">
             <h1>About Us</h1>
             <div>
-                <div style={{display: 'flex'}} data-aos="fade-up" data-aos-delay="200">
+                <div style={{display: 'flex'}} data-aos="fade-up" data-aos-delay="300">
                     <div className='objective'>
                         <img src="./1.png" alt="vision" height="50px"/>
                         <h3>Vision</h3>
                         <p>To improve the quality of service delivery to the citizen and the quality of work environment of the RTOs.</p>
                     </div>
-                    <div className='objective' data-aos="fade-up" data-aos-delay="400">
+                    <div className='objective' data-aos="fade-up" data-aos-delay="500">
                         <img src="./2.png" alt="mission" height="50px"/>
                         <h3>Mission</h3>
                         <p>To automate all Vehicle Registration and Driving License related activities in transport authorities of country with introduction of smart card technology to handle issues like inter state transport vehicle movement and to create state and national level registers of vehicles/DL information</p>
                     </div>
-                    <div className='objective' data-aos="fade-up" data-aos-delay="600">
+                    <div className='objective' data-aos="fade-up" data-aos-delay="700">
                          <img src="./3.png" alt="obj" height="50px"/>
                         <h3>Objectives</h3>
                             <p>Better services to Transport Department as well as citizen</p>
@@ -75,11 +75,15 @@ const Contact = React.forwardRef((props, ref) => {
     return (
         <div ref={ref} className="dl">
             <h1>Contact</h1>
-            <div style={{ display: 'flex' }}>
-                <img src="./ContactUs.jpg" alt="car" width="300" />
-                <div style={{ display: 'block' }}>
+            <div style={{ display: 'flex', padding:'5% 2% 5% 5%' }}>
+                <div data-aos="fade-right">
+                    <img src="./ContactUs.jpg" alt="car" width="200" />
+                </div>
+                <div style={{padding:'0% 2% 0% 5%' }} data-aos="fade-left" >
                     <h2>Phone</h2>
                     <p>+91 0123456789</p>
+                    <h2>Email</h2>
+                    <p>abcd@xyz.com</p>
                 </div>
             </div>
         </div>
@@ -156,7 +160,7 @@ const SelectState = () => {
             <div data-aos="fade-up" data-aos-delay="200">
                 <About ref={aboutRef} />
             </div>
-            <div data-aos="fade-up" data-aos-delay="400">
+            <div>
                 <Contact ref={contactRef} />
             </div>
         </div>

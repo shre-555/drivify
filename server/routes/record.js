@@ -38,13 +38,18 @@ router.get("/", async (req, res) => {
 });
 
 // This section will help you get a single record by id
-router.get("/:id", async (req, res) => {
-  let collection = await db.collection("records");
-  let query = { _id: new ObjectId(req.params.id) };
-  let result = await collection.findOne(query);
+router.get("/application/:applicationNumber", async (req, res) => {
+  try {
+      let collection = await db.collection("records");
+      const query = { applicationNumber: req.params.applicationNumber };
+      const result = await collection.findOne(query);
 
-  if (!result) res.send("Not found").status(404);
-  else res.send(result).status(200);
+      if (!result) return res.status(404).send({ error: "Application not found" });
+      res.status(200).send(result);
+  } catch (err) {
+      console.error(err);
+      res.status(500).send("Error fetching application details");
+  }
 });
 
 // This section will help you create a new record.
@@ -58,6 +63,7 @@ router.post("/", upload.single("aadhaarfile"), async (req, res) => {
       address: req.body.address,
       aadhaarfile: req.file ? req.file.path : null, // Save file path in DB
       aadhaar: req.body.aadhaar,
+      learnersLicense: req.body.learnersLicense,
       city: req.body.city,
       pincode: req.body.pincode,
       email: req.body.email,

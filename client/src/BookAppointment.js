@@ -8,8 +8,12 @@ function Form()
    return(
     <div className='formstyle'>
         <form>
+            <label>Application Number</label>
+            <input type="text" name="appno" required />
             <label>Select Date</label>
-            <input type="date" name="date" required />
+            <input type="datetime-local" name="date" required />
+            <label>Track</label>
+            <input type="text" name="appno" required />
         </form>
     </div>
    );
@@ -25,7 +29,7 @@ function BookAppointment()
                     <figure>
                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
                         <figcaption style={{ marginLeft: '12px', marginTop: '0px', color:'white' }}><b><i>Drivify</i></b></figcaption>
-                        <h1 style={{ color: 'white', textAlign: 'center' }}>Application Form For DL</h1>
+                        <h1 style={{ color: 'white', textAlign: 'center' }}>Book Appointment</h1>
                     </figure>
                 </header>
             </div>

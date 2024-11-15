@@ -17,6 +17,7 @@ const Form = () => {
         pincode: '',
         email: '',
         phno: '',
+        learnersLicense: '',
         bloodGroup: 'O',
         nationality: 'Indian',
         vehicleType: 'twoWheeler',
@@ -47,7 +48,7 @@ const Form = () => {
         if (!validator.isLength(formData.pincode, { min: 6, max: 6 })) newErrors.pincode = "Pincode must be 6 digits";
         if (!validator.isEmail(formData.email)) newErrors.email = "Invalid email address";
         if (!validator.isLength(formData.phno, { min: 10, max: 10 })) newErrors.phno = "Phone number must be 10 digits";
-
+        
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -145,6 +146,17 @@ const Form = () => {
                     onChange={handleInputChange}
                     pattern="[0-9]{12}"
                     placeholder="12 digits"
+                    required
+                />
+                {errors.aadhaar && <p style={{ color: 'red' }}>{errors.aadhaar}</p>}
+                <br /><br />
+
+                <label>Learner's License Number:</label>
+                <input
+                    type="text"
+                    name="learnersLicense"
+                    value={formData.learnersLicense}
+                    onChange={handleInputChange}
                     required
                 />
                 {errors.aadhaar && <p style={{ color: 'red' }}>{errors.aadhaar}</p>}
