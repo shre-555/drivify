@@ -9,6 +9,7 @@ import ApplicationDL from './ApplicationDL';
 import ConfirmDL from './ConfirmDL';
 import Print from "./PrintApplication"
 import BookAppointment from './BookAppointment';
+import PrintDL from './PrintDL';
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/ConfirmDL" element={<ConfirmDL />} />
         <Route path="/print" element={<Print />}/>
         <Route path="/bookdl" element={<BookAppointment />}/>
+        <Route path="/printdl" element={<PrintDL />}/>
       </Routes>
     </Router>
     );

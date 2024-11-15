@@ -100,7 +100,7 @@ const BookAppointment = () => {
                 </header>
             </div>
 
-            <form onSubmit={handleSubmit} className='formstyle'>
+            <form onSubmit={handleSubmit} style={{width: "30%", margin: "5% 20% 5% 30%"}} className='formstyle'>
                     <label>Application Number:</label>
                     <input type="text" value={applicationNumber} onChange={(e) => setApplicationNumber(e.target.value)} required />
                 
