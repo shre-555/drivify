@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import Tesseract from 'tesseract.js';
 import './form_styles.css';
-import './header_col.css'
+import './header_col.css';
 
 const Form = () => {
     const navigate = useNavigate();
@@ -226,11 +226,5 @@ const ApplicationDL = () => {
     );
 };
 
-const styles = {
-    div_style:{
-        background: 'linear-gradient(to right, orange, red, purple)',
-        height: 250,
-    }
-};
 
 export default ApplicationDL;

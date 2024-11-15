@@ -1,6 +1,7 @@
 //Instructions.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import './header_col.css';
 
 const Instructions = () => {
     const div_style = {
@@ -15,7 +16,7 @@ const Instructions = () => {
 
     return (
         <div>
-            <div style={div_style}>
+            <div className='head'>
                 <header>
                     <figure>
                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />

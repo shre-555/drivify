@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './form_styles.css';
+import './header_col.css';
 
 const ConfirmDL = () => {
     const location = useLocation();
@@ -9,7 +10,7 @@ const ConfirmDL = () => {
     console.log(location.state.message);
     return (
         <div>
-            <div style={styles.div_style}>
+            <div className='head'>
                 <header>
                     <div>
                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
@@ -21,14 +22,6 @@ const ConfirmDL = () => {
             </div>
         </div>
     );
-};
-
-const styles = {
-    div_style:{
-        background: 'linear-gradient(to right, orange, red, purple)',
-        height: 250,
-        boxShadow: 'inset 0 0 0 1000px rgba(0, 0, 0, 0.4)',
-    }
 };
 
 export default ConfirmDL;

@@ -8,6 +8,8 @@ import Payment from "./Payment";
 import ApplicationDL from './ApplicationDL';
 import ConfirmDL from './ConfirmDL';
 import Print from "./PrintApplication"
+import Book from "./BookAppointment";
+import BookAppointment from './BookAppointment';
 
 const App = () => {
     return (
@@ -22,6 +24,7 @@ const App = () => {
         <Route path="/ApplicationDL" element={<ApplicationDL />} />
         <Route path="/ConfirmDL" element={<ConfirmDL />} />
         <Route path="/print" element={<Print />}/>
+        <Route path="/bookdl" element={<BookAppointment />}/>
       </Routes>
     </Router>
     );

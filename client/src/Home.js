@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import './header_col.css';
 
 const HomePage = () => {
     const navigate = useNavigate(); // Initialize the navigate hook
@@ -15,7 +16,7 @@ const HomePage = () => {
 
     return (
         <div>
-            <div style={div_style}>
+            <div className='head'>
                 <header>
                     <figure>
                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />

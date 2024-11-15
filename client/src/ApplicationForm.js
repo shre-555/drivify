@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router';
 import { saveApplication , getApplication}from './api'; 
+import './header_col.css';
+import './form_styles.css';
+
 const ApplicationForm = () => {
   const navigate = useNavigate(); // Initialize the navigate hook
     const div_style={
@@ -108,7 +111,7 @@ const ApplicationForm = () => {
 
   return (
     <div>
-        <div style={div_style}>
+        <div className='head'>
         <header>
           <figure>
             <img src="/dl.svg" alt="dl" style={{marginLeft:'0px',width:"100px",height:"100px",fill:'white'}}/>
@@ -119,7 +122,7 @@ const ApplicationForm = () => {
         </div>
     <section>
       <br/>
-      <div style={form_style}>
+      <div className='formstyle'>
         <br/>
       <form onSubmit={handleSubmit}>
         <label style={{fontSize:"25px",marginLeft:'10px'}}>

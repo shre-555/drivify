@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate} from 'react-router-dom';
 import './SelectState.css'; 
+import 'aos/dist/aos.css';
+import Aos from 'aos';
 
 const Steps = React.forwardRef((props, ref) => {
     return (
@@ -45,19 +47,19 @@ const About = React.forwardRef((props, ref) => {
         <div ref={ref} className="about">
             <h1>About Us</h1>
             <div>
-                <div style={{display: 'flex'}}>
+                <div style={{display: 'flex'}} data-aos="fade-up" data-aos-delay="200">
                     <div className='objective'>
-                        <img src="./1.png" height="50px"/>
+                        <img src="./1.png" alt="vision" height="50px"/>
                         <h3>Vision</h3>
                         <p>To improve the quality of service delivery to the citizen and the quality of work environment of the RTOs.</p>
                     </div>
-                    <div className='objective'>
-                        <img src="./2.png" height="50px"/>
+                    <div className='objective' data-aos="fade-up" data-aos-delay="400">
+                        <img src="./2.png" alt="mission" height="50px"/>
                         <h3>Mission</h3>
                         <p>To automate all Vehicle Registration and Driving License related activities in transport authorities of country with introduction of smart card technology to handle issues like inter state transport vehicle movement and to create state and national level registers of vehicles/DL information</p>
                     </div>
-                    <div className='objective'>
-                         <img src="./3.png" height="50px"/>
+                    <div className='objective' data-aos="fade-up" data-aos-delay="600">
+                         <img src="./3.png" alt="obj" height="50px"/>
                         <h3>Objectives</h3>
                             <p>Better services to Transport Department as well as citizen</p>
                             <p>Instant access of Vehicle/DL information to other government departments</p>
@@ -91,6 +93,10 @@ const SelectState = () => {
     const aboutRef = useRef(null);
     const contactRef = useRef(null);
     const stepsRef = useRef(null);
+
+    useEffect(() => {
+        Aos.init({ duration: 600 });
+    }, []);
 
     const handleStateChange = (event) => {
         setSelectedState(event.target.value);
@@ -144,13 +150,13 @@ const SelectState = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div data-aos="fade-up">
                 <Steps ref={stepsRef} />
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-delay="200">
                 <About ref={aboutRef} />
             </div>
-            <div>
+            <div data-aos="fade-up" data-aos-delay="400">
                 <Contact ref={contactRef} />
             </div>
         </div>
