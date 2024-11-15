@@ -118,4 +118,29 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// POST Route to book an appointment
+router.post("/appointment", async (req, res) => {
+  try {
+    const { applicationNumber, appointmentDate, testTrack } = req.body;
+
+    if (!applicationNumber || !appointmentDate || !testTrack) {
+      return res.status(400).send({ error: "Missing required fields" });
+    }
+
+    const collection = await db.collection("records");
+    const result = await collection.updateOne(
+      { applicationNumber },
+      { $set: { appointmentDate, testTrack } }
+    );
+
+    if (result.matchedCount === 0) {
+      return res.status(404).send({ error: "Application not found" });
+    }
+
+    res.status(200).send({ message: "Appointment booked successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error booking appointment");
+  }
+});
 export default router;

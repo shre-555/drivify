@@ -67,6 +67,15 @@ const ConfirmDL = () => {
                 <p><strong>Blood Group:</strong> {applicationData.bloodGroup}</p>
                 <p><strong>Nationality:</strong> {applicationData.nationality}</p>
                 <p><strong>Vehicle Type:</strong> {applicationData.vehicleType}</p>
+                <h3>Booking Details</h3>
+                {applicationData.appointmentDate && applicationData.testTrack ? (
+                    <>
+                        <p><strong>Booking Date:</strong> {applicationData.appointmentDate}</p>
+                        <p><strong>Track:</strong> {applicationData.testTrack}</p>
+                    </>
+                ) : (
+                    <p><strong>Booking Status:</strong> Not booked yet</p>
+                )}
             </div>
         </div>
     );

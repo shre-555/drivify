@@ -8,7 +8,6 @@ import Payment from "./Payment";
 import ApplicationDL from './ApplicationDL';
 import ConfirmDL from './ConfirmDL';
 import Print from "./PrintApplication"
-import Book from "./BookAppointment";
 import BookAppointment from './BookAppointment';
 
 const App = () => {
