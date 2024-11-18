@@ -1,46 +1,3 @@
-// import React from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
-// import './form_styles.css';
-// import './header_col.css';
-
-// function Form()
-// {
-//    return(
-//     <div className='formstyle'>
-//         <form>
-//             <label>Application Number</label>
-//             <input type="text" name="appno" required />
-//             <label>Select Date</label>
-//             <input type="datetime-local" name="date" required />
-//             <label>Track</label>
-//             <input type="text" name="appno" required />
-//         </form>
-//     </div>
-//    );
-// }
-   
-
-// function BookAppointment()
-// {
-//     return (
-//         <div>
-//             <div className='head'>
-//                 <header>
-//                     <figure>
-//                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
-//                         <figcaption style={{ marginLeft: '12px', marginTop: '0px', color:'white' }}><b><i>Drivify</i></b></figcaption>
-//                         <h1 style={{ color: 'white', textAlign: 'center' }}>Book Appointment</h1>
-//                     </figure>
-//                 </header>
-//             </div>
-//             <div>
-//                 <Form />
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default BookAppointment;
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import './form_styles.css';
@@ -49,6 +6,10 @@ import './header_col.css';
 const BookAppointment = () => {
     const navigate = useNavigate();
     
+    const handleLogo = () => {
+        navigate('/home'); 
+    }
+
     const [applicationNumber, setApplicationNumber] = useState(''); // Input for application number
     const [tracks] = useState(["Track A", "Track B", "Track C"]); // Available tracks
     const [selectedTrack, setSelectedTrack] = useState('');
@@ -90,11 +51,11 @@ const BookAppointment = () => {
 
     return (
         <div>
-            <div className="head">
+            <div className="head"  onClick={handleLogo}>
                 <header>
                     <div>
-                        <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
-                        <figcaption style={{ marginLeft: '12px', marginTop: '0px', color: 'white' }}><b><i>Drivify</i></b></figcaption>
+                        <img src="/dl.svg" alt="dl"/>
+                        <figcaption><b><i>Drivify</i></b></figcaption>
                         <h1 style={{ color: 'white', textAlign: 'center' }}>Book Your Appointment</h1>
                     </div>
                 </header>

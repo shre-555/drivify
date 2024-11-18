@@ -7,6 +7,7 @@ import './header_col.css';
 
 const Form = () => {
     const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         fullName: '',
         dob: '',
@@ -64,7 +65,8 @@ const Form = () => {
                 logger: (m) => console.log(m),
             }
         ).then(({ data: { text } }) => {
-            setExtractedText(text);  
+            setExtractedText(text);
+            console.log(extractedText);  
             extractAadhaarNumber(text);  
         });
     };
@@ -220,13 +222,18 @@ const Form = () => {
 };
 
 const ApplicationDL = () => {
+    const navigate = useNavigate();
+    const handleLogo = () => {
+        navigate('/home'); 
+    }
+
     return (
         <div>
-            <div className='head'>
+            <div className='head' onClick={handleLogo}>
                 <header>
                     <div>
-                        <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
-                        <figcaption style={{ marginLeft: '12px', marginTop: '0px', color: 'white' }}><b><i>Drivify</i></b></figcaption>
+                        <img src="/dl.svg" alt="dl" />
+                        <figcaption><b><i>Drivify</i></b></figcaption>
                         <h1 style={{ color: 'white', textAlign: 'center' }}>Application Form For DL</h1>
                     </div>
                 </header>

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './form_styles.css';
 import './header_col.css';
 
 const ConfirmDL = () => {
+    const navigate = useNavigate();
+    const handleLogo = () => {
+        navigate('/home'); 
+    }
     const location = useLocation();
     const applicationNumber = location.state.message || ''; // Access application number from state
     console.log(applicationNumber);
@@ -47,8 +51,8 @@ const ConfirmDL = () => {
             <div className='head'>
                 <header>
                     <div>
-                        <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
-                        <figcaption style={{ marginLeft: '12px', marginTop: '0px', color: 'white' }}><b><i>Drivify</i></b></figcaption>
+                        <img src="/dl.svg" alt="dl" onClick={handleLogo} />
+                        <figcaption><b><i>Drivify</i></b></figcaption>
                         <h1 style={{ color: 'white', textAlign: 'center' }}>Application Confirmed</h1>
                     </div>
                 </header>

@@ -9,7 +9,7 @@ const Steps = React.forwardRef((props, ref) => {
         <div ref={ref} style={{paddingLeft: '50px', backgroundColor: 'rgb(243, 243, 243)'}}>
             <h1>Steps To Apply</h1>
             <div className="steps">
-                <div className='stepbox'>
+                <div className='s_stepbox'>
                     <img src="./apply.png" alt="apply" width="70" />
                     <br/>
                     <b>Apply</b>
@@ -18,7 +18,7 @@ const Steps = React.forwardRef((props, ref) => {
                     <p>Fill the application form</p>
                     <p>Get your application number</p>
                 </div>
-                <div className='stepbox'>
+                <div className='s_stepbox'>
                     <img src="./test.png" alt="test" width="70" />
                     <br/>
                     <b>Test</b>
@@ -27,7 +27,7 @@ const Steps = React.forwardRef((props, ref) => {
                     <p>Login to the test</p>
                     <p>Give the test</p>
                 </div>
-                <div className='stepbox'>
+                <div className='s_stepbox'>
                     <img src="./complete.png" alt="test" width="70" />
                     <br/>
                     <b>Get Your License</b>

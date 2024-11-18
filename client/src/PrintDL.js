@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './form_styles.css';
 import './header_col.css';
+import { useNavigate } from 'react-router-dom';
 
 const PrintDL = () => {
+    const navigate = useNavigate();
+
+    const handleLogo = () => {
+        navigate('/home'); 
+    }
+
     const [applicationNumber, setApplicationNumber] = useState(''); // State to store the input application number
     const [applicationData, setApplicationData] = useState(null); // State to hold the fetched data
     const [error, setError] = useState(null);
@@ -46,11 +53,11 @@ const PrintDL = () => {
     if (!applicationData) {
         return (
             <div>
-                <div className='head'>
+                <div className='head' onClick={handleLogo} >
                     <header>
                         <div>
-                            <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
-                            <figcaption style={{ marginLeft: '12px', marginTop: '0px', color: 'white' }}><b><i>Drivify</i></b></figcaption>
+                            <img src="/dl.svg" alt="dl"/>
+                            <figcaption><b><i>Drivify</i></b></figcaption>
                             <h1 style={{ color: 'white', textAlign: 'center' }}>Print Details</h1>
                         </div>
                     </header>

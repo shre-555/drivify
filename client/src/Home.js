@@ -1,7 +1,7 @@
+//Home.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './header_col.css';
-
+import './Home.css';
 const HomePage = () => {
     const navigate = useNavigate(); // Initialize the navigate hook
 
@@ -13,10 +13,19 @@ const HomePage = () => {
     const handleApplyClick = () => {
         navigate('/instructions'); // Navigate to the instructions page
     };
+    const handlePrintClick=()=>{
+        navigate('/print');// Navigate to Home page
+    };
+    const handleApplyDLClick=()=>{
+        navigate('/applicationdl');// Navigate to Home page
+    };
+    const handleprintDL=()=>{
+        navigate('/printdl');// Navigate to Home page
+    };
 
     return (
         <div>
-            <div className='head'>
+            <div style={div_style}>
                 <header>
                     <figure>
                         <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
@@ -28,37 +37,23 @@ const HomePage = () => {
             <main>
                 <main>
                     <h1>Welcome to Drivify!</h1>
-                    <p style={{fontSize:'25px'}}>Your one-stop solution for managing driving licenses.</p>
-                    <div className="featuresLL">
-                        <label style={{fontSize:'25px'}}>Learner's License: </label>
-                        <button style={{fontSize:'25px'}} onClick={handleApplyClick}>Apply</button> {/* Navigate on click */}
-                        <button style={{fontSize:'25px'}}>Renew</button>
-                        <button style={{fontSize:'25px'}}>Application Status</button>
-                        <button style={{fontSize:'25px'}}>Download Forms</button>
+                    <p style={{fontSize:'25px'}}>Your one-stop solution for managing driving licences.</p>
+                    <div style={{alignItems:'center'}} className="steps">
+                        <label style={{fontSize:'25px'}}>Learner's Licence: </label><br/>
+                        <div className='stepbox' onClick={handleApplyClick}><img src='/form.png'  alt="Form logo" style={{height:120,width:120}}></img><p style={{fontSize:'25px'}}>Apply</p>{/* Navigate on click */}</div>
+                        <div className='stepbox' onClick={handlePrintClick}><img src='/print.png'  alt="Print logo" style={{height:120,width:120}}></img><p style={{fontSize:'25px'}}>Print Forms</p></div>
+                        <div className='stepbox'><img src='/test2.png'  alt="Test logo" style={{height:120,width:120}}></img><p style={{fontSize:'25px'}}>Take Test</p></div>
                     </div>
-                    <div className="featuresDL">
-                        <label style={{fontSize:'25px'}}>Driving License: </label>
-                        <button style={{fontSize:'25px'}}>Apply</button> {/* Navigate on click */}
-                        <button style={{fontSize:'25px'}}>Renew</button>
-                        <button style={{fontSize:'25px'}}>Application Status</button>
-                        <button style={{fontSize:'25px'}}>Download Forms</button>
+                    <div style={{alignItems:'center'}} className="steps">
+                        <label style={{fontSize:'25px'}}>Driving Licence: </label><br/>
+                        <div className='stepbox' onClick={handleApplyDLClick}><img src='/calendar.png'  alt="Form logo" style={{height:120,width:120}}></img><p style={{fontSize:'25px'}}>Apply</p><br/></div> {/* Navigate on click */}
+                        <div className='stepbox' onClick={handleprintDL}><img src='/print.png'  alt="Print logo" style={{height:120,width:120}}></img><p style={{fontSize:'25px'}}>Print Forms</p></div>
                     </div>
-                    <section className="testimonials">
-                        <h3 style={{fontSize:'25px'}}>User Testimonials</h3>
-                        <p style={{fontSize:'25px'}}>"Drivify made the application process so easy!"</p>
+                    <section>
+                        <marquee className="faq" style={{fontSize:'25px'}}><b>Frequently Asked Questions:</b> What documents do I need to apply?     <b>User Testimonials:</b> "Drivify made the application process so easy!"</marquee>
                     </section>
-                    <section className="faq">
-                        <h3 style={{fontSize:'25px'}}>Frequently Asked Questions</h3>
-                        <p style={{fontSize:'25px'}}>What documents do I need to apply?</p>
-                    </section>
+        
                 </main>
-
-                <footer>
-                    <p style={{fontSize:'25px'}}>Contact us at support@drivify.com | +1-800-123-4567</p>
-                    <p style={{fontSize:'25px'}}>Follow us on social media</p>
-                    <a style={{fontSize:'25px'}} href="/privacy-policy">Privacy Policy</a>
-                    <a style={{fontSize:'25px'}} href="/terms">Terms of Service</a>
-                </footer>
             </main>
         </div>
     );
