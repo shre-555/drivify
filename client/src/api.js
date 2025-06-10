@@ -1,7 +1,7 @@
 // api.js
 export const saveApplication = async (formData) => {
     try {
-        const response = await fetch("http://localhost:5050/api/save-application", {
+        const response = await fetch("http://localhost:5000/api/save-application", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export const saveApplication = async (formData) => {
 
 export const getApplication = async (applicationId) => {
     try {
-        const response = await fetch("http://localhost:5050/api/get-application?applicationId="+applicationId, {
+        const response = await fetch("http://localhost:5000/api/get-application?applicationId="+applicationId, {
             method: "GET",
             headers: {
                "Content-Type": "application/json",

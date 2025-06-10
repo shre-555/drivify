@@ -6,10 +6,13 @@ import './header_col.css';
 const BookAppointment = () => {
     const navigate = useNavigate();
     
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page
+    }, []);
+
     const handleLogo = () => {
         navigate('/home'); 
     }
-
     const [applicationNumber, setApplicationNumber] = useState(''); // Input for application number
     const [tracks] = useState(["Track A", "Track B", "Track C"]); // Available tracks
     const [selectedTrack, setSelectedTrack] = useState('');
@@ -51,11 +54,11 @@ const BookAppointment = () => {
 
     return (
         <div>
-            <div className="head"  onClick={handleLogo}>
+            <div className="head">
                 <header>
                     <div>
-                        <img src="/dl.svg" alt="dl"/>
-                        <figcaption><b><i>Drivify</i></b></figcaption>
+                        <img src="/dl.svg" alt="dl" onClick={handleLogo} style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
+                        <figcaption style={{ marginLeft: '12px', marginTop: '0px', color: 'white' }}><b><i>Drivify</i></b></figcaption>
                         <h1 style={{ color: 'white', textAlign: 'center' }}>Book Your Appointment</h1>
                     </div>
                 </header>

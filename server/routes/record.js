@@ -1,21 +1,21 @@
-import express from "express";
+const express = require("express");
 
 // This will help us connect to the database
-import db from "../db/conn.js";
+const db = require("../db/conn.js");
 
-// This help convert the id from string to ObjectId for the _id.
-import { ObjectId } from "mongodb";
+// This helps convert the id from string to ObjectId for the _id.
+const { ObjectId } = require("mongodb");
 
-// for file upload
-import multer from "multer";
-import path from "path";
+// For file upload
+const multer = require("multer");
+const path = require("path");
 
-// router is an instance of the express router.
+// Router is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
 const router = express.Router();
 
-//use timestamp (13-digit) for application number
+// Use timestamp (13-digit) for application number
 const applicationNumber = Date.now().toString();
 
 // Set up multer storage options
@@ -34,21 +34,21 @@ const upload = multer({ storage });
 router.get("/", async (req, res) => {
   let collection = await db.collection("records");
   let results = await collection.find({}).toArray();
-  res.send(results).status(200);
+  res.status(200).send(results);
 });
 
 // This section will help you get a single record by id
 router.get("/application/:applicationNumber", async (req, res) => {
   try {
-      let collection = await db.collection("records");
-      const query = { applicationNumber: req.params.applicationNumber };
-      const result = await collection.findOne(query);
+    let collection = await db.collection("records");
+    const query = { applicationNumber: req.params.applicationNumber };
+    const result = await collection.findOne(query);
 
-      if (!result) return res.status(404).send({ error: "Application not found" });
-      res.status(200).send(result);
+    if (!result) return res.status(404).send({ error: "Application not found" });
+    res.status(200).send(result);
   } catch (err) {
-      console.error(err);
-      res.status(500).send("Error fetching application details");
+    console.error(err);
+    res.status(500).send("Error fetching application details");
   }
 });
 
@@ -96,7 +96,7 @@ router.patch("/:id", async (req, res) => {
 
     let collection = await db.collection("records");
     let result = await collection.updateOne(query, updates);
-    res.send(result).status(200);
+    res.status(200).send(result);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error updating record");
@@ -111,7 +111,7 @@ router.delete("/:id", async (req, res) => {
     const collection = db.collection("records");
     let result = await collection.deleteOne(query);
 
-    res.send(result).status(200);
+    res.status(200).send(result);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error deleting record");
@@ -143,4 +143,6 @@ router.post("/appointment", async (req, res) => {
     res.status(500).send("Error booking appointment");
   }
 });
-export default router;
+
+// Correct export of the router
+module.exports = router;

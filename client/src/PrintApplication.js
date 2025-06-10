@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import { getApplication } from "./api"; // Assuming getApplication is defined in api.js
-
+import { useNavigate } from "react-router-dom";
+import './header_col.css';
+import './form_styles.css';
 const Print = () => {
-  const div_style = {
-    background: "linear-gradient(to right, orange, red, purple)",
-    height: 250,
-  };
-  const form_Style={
-    borderRadius:"20px",
-    alignText:'center',
-    marginLeft:"450px",
-    height:120,
-    width:400,
-    border:"1px solid black",
-  };
+
+  const navigate = useNavigate();
+    const handleLogo = () => {
+        navigate('/home'); 
+    }
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -65,13 +60,14 @@ const Print = () => {
 
   return (
     <div>
-      <div style={div_style}>
+      <div className='head'>
         <header>
           <figure>
             <img
               src="/dl.svg"
               alt="dl"
-              style={{ marginLeft: "0px", width: "100px", height: "100px" }}
+              onClick={handleLogo}
+              style={{ marginLeft: "0px", width: "100px", height: "100px", cursor:'pointer'  }}
             />
             <figcaption style={{ marginLeft: "12px", marginTop: "0px" }}>
               <b><i>Drivify</i></b>
@@ -83,8 +79,8 @@ const Print = () => {
         </header>
       </div>
       <br />
-      <div style={form_Style}><br/>
-        <form onSubmit={handleSubmit}>
+      <div ><br/>
+        <form onSubmit={handleSubmit} className="formstyle">
           <label style={{fontSize:"25px",marginLeft:"10px"}}>Full Name: </label>
           <input style={{fontSize:"25px"}}
             type="text"
@@ -94,7 +90,7 @@ const Print = () => {
             required
           />
           <br /><br/>
-          <button style={{padding:"2px",marginLeft:"150px",fontSize:"25px"}}type="submit">Submit</button>
+          <button style={{fontSize:20}}type="submit">Submit</button>
         </form>
       </div>
       <br />

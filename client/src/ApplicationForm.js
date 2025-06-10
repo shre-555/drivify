@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate} from 'react-router';
-import { saveApplication , getApplication}from './api'; 
+import { saveApplication}from './api'; 
 import './header_col.css';
 import './form_styles.css';
 
 const ApplicationForm = () => {
   const navigate = useNavigate(); // Initialize the navigate hook
-    const div_style={
-        background: 'linear-gradient(to right,orange,red,purple)',
-        height:250,
-    };
+    const handleLogo = () => {
+        navigate('/home'); 
+    }
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+}, []);
+
     const [formData, setFormData] = useState({
       fullName: "",
       dob: "",
@@ -99,22 +103,13 @@ const ApplicationForm = () => {
   
     navigate('/payment');  // Navigate to the payment page after successful form submission
   };
-  
-  const form_style={
-      border:'1px solid black',
-      marginLeft:'350px',
-      textAlign:'left',
-      height:'680px',
-      width:'620px',
-      borderRadius:'20px',
-  };
 
   return (
     <div>
         <div className='head'>
         <header>
           <figure>
-            <img src="/dl.svg" alt="dl" style={{marginLeft:'0px',width:"100px",height:"100px",fill:'white'}}/>
+            <img src="/dl.svg" alt="dl" onClick={handleLogo} style={{marginLeft:'0px',width:"100px",height:"100px",fill:'white'}}/>
             <figcaption style={{marginLeft:'12px',marginUp:'0px'}}><b><i>Drivify</i></b></figcaption>
             <h1 style={{color:'white',textAlign:'center'}}>Application Form</h1>
           </figure>
@@ -125,21 +120,20 @@ const ApplicationForm = () => {
       <div className='formstyle'>
         <br/>
       <form onSubmit={handleSubmit}>
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label>
           Full Name:
           </label>
-          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required/>
+          <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} required/>
         <br />
         <br/>
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Date of Birth: </label>
-          <input style={{fontSize:"25px",marginLeft:'20px'}}type="date" name="dob" value={formData.dob} onChange={handleInputChange} required />
+          <input type="date" name="dob" value={formData.dob} onChange={handleInputChange} required />
         <br/>
         <br />
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Address:</label>
           <textarea 
-              style={{fontSize:"25px",marginLeft:'20px'}}
               name="address"  // Correct the name here
               rows="2" 
               cols="30" 
@@ -149,25 +143,24 @@ const ApplicationForm = () => {
             </textarea>
             <br/>
         <br/>
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Aadhar no.:</label>
-          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="aadhar" pattern="[0-9]{12}" placeholder='12 digits' value={formData.aadhar} onChange={handleInputChange} required ></input>
+          <input type="text" name="aadhar" pattern="[0-9]{12}" placeholder='12 digits' value={formData.aadhar} onChange={handleInputChange} required ></input>
         <br/>
         <br />
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           City: </label>
-          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="city" value={formData.city} onChange={handleInputChange} required ></input>
+          <input type="text" name="city" value={formData.city} onChange={handleInputChange} required ></input>
         <br/>
         <br/>
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Pincode:</label>
-          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="pincode" pattern="[0-9]{6}" placeholder='6 digits' value={formData.pincode} onChange={handleInputChange} required ></input>
+          <input type="text" name="pincode" pattern="[0-9]{6}" placeholder='6 digits' value={formData.pincode} onChange={handleInputChange} required ></input>
         <br/>
         <br />
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Email: </label>
           <input 
-            style={{fontSize:"25px",marginLeft:'10px'}}
             type="email" 
             name="email"  // Make sure this is "email"
             value={formData.email}  // Bind it to formData.email
@@ -176,14 +169,14 @@ const ApplicationForm = () => {
           />
         <br/>
         <br/>
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Phone no.: </label>
-          <input style={{fontSize:"25px",marginLeft:'20px'}}type="text" name="phno" pattern="[0-9]{10}" placeholder='10 digits'value={formData.phno} onChange={handleInputChange} required ></input>
+          <input type="text" name="phno" pattern="[0-9]{10}" placeholder='10 digits'value={formData.phno} onChange={handleInputChange} required ></input>
         <br/>
         <br/>
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Blood group: </label>
-          <select style={{fontSize:"25px",marginLeft:'20px'}}name="bloodGroup" value={formData.bloodGroup} onChange={handleInputChange}>
+          <select name="bloodGroup" value={formData.bloodGroup} onChange={handleInputChange}>
             <option value="O">O</option>
             <option value="A">A</option>
             <option value="B">B</option>
@@ -191,9 +184,9 @@ const ApplicationForm = () => {
           </select>
         <br/>
         <br />
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Nationality: </label>
-          <select style={{fontSize:"25px",marginLeft:'20px'}}name="nationality" value={formData.nationality} onChange={handleInputChange}>
+          <select name="nationality" value={formData.nationality} onChange={handleInputChange}>
             <option value="Indian">Indian</option>
             <option value="British">British</option>
             <option value="American">American</option>
@@ -203,15 +196,15 @@ const ApplicationForm = () => {
           </select>
         <br/>
         <br />
-        <label style={{fontSize:"25px",marginLeft:'10px'}}>
+        <label >
           Vehicle Type: </label>
-          <select style={{fontSize:"25px",marginLeft:'10px'}}name="vehicleType" value={formData.vehicleType} onChange={handleInputChange}>
+          <select name="vehicleType" value={formData.vehicleType} onChange={handleInputChange}>
             <option value="twoWheeler">Two-Wheeler</option>
             <option value="car">Car</option>
             <option value="truck">Truck</option>
           </select>
         <br/><br/>
-        <button style={{fontSize:"25px",marginLeft:'200px',padding:'5px'}} type="submit" onClick={handleSubmit}>Submit Application</button>
+        <button type="submit" onClick={handleSubmit}>Submit Application</button>
       </form>
       </div>
     </section>

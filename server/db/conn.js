@@ -1,4 +1,4 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+const { MongoClient, ServerApiVersion } = require("mongodb");
 
 const uri = "mongodb://localhost:27017/Drivify";
 const client = new MongoClient(uri, {
@@ -7,20 +7,26 @@ const client = new MongoClient(uri, {
     strict: true,
     deprecationErrors: true,
   }
-})
+});
 
-try {
-  await client.connect();
-  await client.db("test").command({ping:1});
-  console.log("Successfully connected to MongoDB")
-
+async function connectDb() {
+  try {
+    await client.connect();
+    client.db("test").command({ ping: 1 });
+    console.log("Successfully connected to MongoDB");
+  } catch (err) {
+    console.log(err);
+  }
 }
-catch(err){
-  console.log(err);
-}
 
-let db= client.db("driver");
-export default db;
+let db = client.db("driver");
+
+// Exporting the db connection object
+module.exports = db;  // Export the db object
+
+// Or if you prefer to export the connectDb function:
+module.exports.connectDb = connectDb;
+
 
 // const Db = "mongodb://localhost:27017/Drivify";
 // const client = new MongoClient(Db, {

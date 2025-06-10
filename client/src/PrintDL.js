@@ -1,11 +1,15 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
 import './form_styles.css';
 import './header_col.css';
-import { useNavigate } from 'react-router-dom';
 
 const PrintDL = () => {
-    const navigate = useNavigate();
 
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page
+    }, []);
+
+    const navigate = useNavigate();
     const handleLogo = () => {
         navigate('/home'); 
     }
@@ -53,11 +57,11 @@ const PrintDL = () => {
     if (!applicationData) {
         return (
             <div>
-                <div className='head' onClick={handleLogo} >
+                <div className='head'>
                     <header>
                         <div>
-                            <img src="/dl.svg" alt="dl"/>
-                            <figcaption><b><i>Drivify</i></b></figcaption>
+                            <img src="/dl.svg" alt="dl" onClick={handleLogo} style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white', cursor:'pointer' }} />
+                            <figcaption style={{ marginLeft: '12px', marginTop: '0px', color: 'white' }}><b><i>Drivify</i></b></figcaption>
                             <h1 style={{ color: 'white', textAlign: 'center' }}>Print Details</h1>
                         </div>
                     </header>

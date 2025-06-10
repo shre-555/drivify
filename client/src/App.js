@@ -2,6 +2,7 @@ import React from 'react';
 import SelectState from './SelectState';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./Home";
+import Quiz from "./Quiz"
 import Instructions from "./Instructions";
 import Apply from "./ApplicationForm";
 import Payment from "./Payment";
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/apply" element={<Apply />} />
         <Route path="/instructions" element={<Instructions />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/quiz" element={<Quiz/>}/>
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/ApplicationDL" element={<ApplicationDL />} />
         <Route path="/ConfirmDL" element={<ConfirmDL />} />

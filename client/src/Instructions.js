@@ -2,14 +2,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './header_col.css';
+import './form_styles.css';
 
 const Instructions = () => {
-    const div_style = {
-        background: 'linear-gradient(to right, orange, red, purple)',
-        height: 250,
-    };
     const navigate = useNavigate(); // Initialize useNavigate hook for redirection
-
+    const handleLogo = () => {
+        navigate('/home'); 
+    }
     const handleOkClick = () => {
         navigate('/apply'); // Redirects to the application form page
     };
@@ -19,14 +18,14 @@ const Instructions = () => {
             <div className='head'>
                 <header>
                     <figure>
-                        <img src="/dl.svg" alt="dl" style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white' }} />
+                        <img src="/dl.svg" alt="dl" onClick={handleLogo} style={{ marginLeft: '0px', width: "100px", height: "100px", fill: 'white', cursor:'pointer'  }} />
                         <figcaption style={{marginLeft:'12px',marginUp:'0px'}}><b><i>Drivify</i></b></figcaption>
                         <h1 style={{ color: 'white', textAlign: 'center' }}>Application for Learner's Licence</h1>
                     </figure>
                 </header>
             </div>
             <br/>
-            <div style={{textAlign:'center',height:'350px',width:'500px',border:'1px solid black',alignItems:'center',marginLeft:'400px',borderRadius:'20px'}}>
+            <div className='formstyle'>
                 <br/>
                 <h2>Instructions</h2><br/>
                 <ol style={{textAlign:'left',paddingLeft: '20px', listStylePosition: 'inside'}}>
