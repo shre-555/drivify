@@ -2,6 +2,8 @@
 
 Drivify is a web application designed to streamline the process of applying for driving licenses. It provides users with an intuitive interface to apply for learner's licenses, book appointments, and manage driving license applications. The platform integrates features like form submission,and application tracking, making it a one-stop solution for driving license management.
 
+Check out the demo video!
+
 ## Features
 - Apply for learner's licenses and driving licenses.
 - Book appointments for driving tests.
